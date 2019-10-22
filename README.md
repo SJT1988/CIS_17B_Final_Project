@@ -13,11 +13,11 @@ https://discord.gg/EKgU5Y
   * Laura will have a draft
  * real time combat
 
-##TODO
+## TODO
 * Laura will come up with a first draft of story
 * flesh out combat system
 * flesh out crafting mechanics
 * once we find our focus, assign roles
 
-##End Goal
+## End Goal
 * ~ 6 weeks to make
