@@ -4,7 +4,7 @@ https://discord.gg/EKgU5Y
 
 ## Roles:
 
-##Brainstorm
+## Brainstorm
 * Top Down 2D RPG
 * collect to build to fight
 * leveling system: gear or point based (decided)
