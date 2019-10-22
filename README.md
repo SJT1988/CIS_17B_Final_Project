@@ -23,6 +23,11 @@ https://discord.gg/EKgU5Y
    * this may also need to be simplified
   * comedy
  
+ ## SPENCER'S NOTES
+ * Given format and time constraints, strongly recommend turn-based combat
+   instead of real-time combat.
+ * This can enable us to not worry about complicated sprite animations until the end...
+ * ...if that is a viable option
 
 ## TODO
 * Learn more about SDL -- see what we can do
