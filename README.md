@@ -1,5 +1,4 @@
 # CIS_17B_Final_Project
-## Contact Kristian @ kdompor@student.rccd.edu if Discord link doesnt work
 
 ## Discord Link
 https://discord.gg/EKgU5Y
