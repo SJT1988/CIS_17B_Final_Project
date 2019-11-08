@@ -10,13 +10,13 @@ As of this update I have finished video #12. This is between 2-3 hours of conten
 I have uploaded my version of the project with necessary (mostly trivial) differences
 so far. This is the folder **BirchEngine_Mod** and I think we should stick with this.
 
-##So What Does This Thing Do?
+## So What Does This Thing Do?
 
 The BirchEngine is just what this guy is calling his project. The majority of code here
 is from the SDL2 and SDL_image libraries. However, I expect that to tilt towards original,
 object-oriented code for the remainder of videos until we have the minimum we need to jump off.
 
-##What is ECS?
+## What is ECS?
 
 "ECS" := "Entity-Component System". This is a design pattern where objects can be assigned properties that have their own override methods for Initi(), Draw(), Update(), Render(), etc. which keeps us from having to have a laundry list of code several times in the game loop. If a component needs to render something to the screen as an animation, it will do that via its own Init(), Update(), and Render Functions at runtime, but these are defined in that component's class files, not in the game loop.
 
