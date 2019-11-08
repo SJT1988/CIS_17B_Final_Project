@@ -1,8 +1,5 @@
 # CIS_17B_Final_Project
 
-## Discord Link
-https://discord.gg/EKgU5Y
-
 ## Roles:
 
 ## Brainstorm
