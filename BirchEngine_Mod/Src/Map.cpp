@@ -1,81 +1,37 @@
 #include "Map.h"
-#include "TextureManager.h"
+#include "Game.h"
+#include <fstream>
 
-int level_00[11][11] =
-{
-	{1,1,1,1,1,1,1,1,1,1,1},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,2,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,0,0,0,0,0,0,0,0,0,1,},
-	{1,1,1,1,1,1,1,1,1,1,1}
-};
+#include "Constants.h"
 
 Map::Map()
 {
-	floor = TextureManager::LoadTexture("Assets/floor.png"); // 0
-	bricks = TextureManager::LoadTexture("Assets/bricks.png"); // 1
-	ladder = TextureManager::LoadTexture("Assets/ladder.png"); // 2
-	
-	LoadMap(level_00);
-
-	src.x = dest.x = 0;
-	src.y = dest.y = 0;
-	src.w = dest.w = TILE_SIZE;
-	src.h = dest.h = TILE_SIZE;
 
 }
 
 Map::~Map()
 {
-	SDL_DestroyTexture(floor);
-	SDL_DestroyTexture(bricks);
-	SDL_DestroyTexture(ladder);
+
 }
 
-void Map::LoadMap(int arr[11][11])
+void Map::LoadMap(std::string path, int sizeX, int sizeY)
 {
-	for (int i = 0; i < 11; i++)
+	char tile;
+	std::fstream mapFile;
+	mapFile.open(path);
+
+	for (int y = 0; y < sizeY; y++)
 	{
-		for (int j = 0; j < 11; j++)
+		for (int x = 0; x < sizeX; x++)
 		{
-			map[i][j] = arr[i][j];
+			mapFile.get(tile);
+			// id must be int and atoi() converts string to int:
+			Game::AddTile(atoi(&tile), x * TILE_SIZE, y * TILE_SIZE);
+			mapFile.ignore(); //ignore the comma
 		}
 	}
+
+	mapFile.close();
 }
 
-void Map::DrawMap()
-{
-	int type = 0;
 
-	for (int i = 0; i < 11; i++)
-	{
-		for (int j = 0; j < 11; j++)
-		{
-			type = map[i][j];
-
-			dest.x = TILE_SIZE * j;
-			dest.y = TILE_SIZE * i;
-
-			switch (type)
-			{
-				case 0:
-					TextureManager::Draw(floor, src, dest);
-					break;
-				case 1:
-					TextureManager::Draw(bricks, src, dest);
-					break;
-				case 2:
-					TextureManager::Draw(ladder, src, dest);
-					break;
-				default:
-					break;
-			}
-		}
-	}
-}

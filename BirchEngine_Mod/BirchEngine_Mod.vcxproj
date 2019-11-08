@@ -127,20 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Assets\map00.map" />
     <None Include="libpng16-16.dll" />
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\brick.png" />
-    <Image Include="Assets\bricks.png" />
-    <Image Include="Assets\floor.png" />
-    <Image Include="Assets\ladder.png" />
-    <Image Include="Assets\RexTangle.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Src\Collision.cpp" />
+    <ClCompile Include="Src\Constants.cpp" />
+    <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\Game.cpp" />
     <ClCompile Include="Src\GameObject.cpp" />
     <ClCompile Include="Src\main.cpp" />
@@ -150,17 +146,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Collision.h" />
+    <ClInclude Include="Src\Constants.h" />
     <ClInclude Include="Src\ECS\ColliderComponent.h" />
     <ClInclude Include="Src\ECS\Components.h" />
     <ClInclude Include="Src\ECS\ECS.h" />
     <ClInclude Include="Src\ECS\KeyboardController.h" />
     <ClInclude Include="Src\ECS\SpriteComponent.h" />
+    <ClInclude Include="Src\ECS\TileComponent.h" />
     <ClInclude Include="Src\ECS\TransformComponent.h" />
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\GameObject.h" />
     <ClInclude Include="Src\Map.h" />
     <ClInclude Include="Src\TextureManager.h" />
     <ClInclude Include="Src\Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\bricks.png" />
+    <Image Include="Assets\floor.png" />
+    <Image Include="Assets\ladder.png" />
+    <Image Include="Assets\RexTangle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

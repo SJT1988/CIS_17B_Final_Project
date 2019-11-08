@@ -20,26 +20,15 @@
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
     <None Include="zlib1.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\brick.png">
+    <None Include="Assets\map00.map">
       <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\bricks.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\floor.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\ladder.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\RexTangle.png">
-      <Filter>Assets</Filter>
-    </Image>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Collision.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Constants.cpp">
       <Filter>Src</Filter>
     </ClCompile>
     <ClCompile Include="Src\Game.cpp">
@@ -60,9 +49,15 @@
     <ClCompile Include="Src\Vector2D.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\ECS.cpp">
+      <Filter>Src\ECS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Collision.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Constants.h">
       <Filter>Src</Filter>
     </ClInclude>
     <ClInclude Include="Src\Game.h">
@@ -95,8 +90,25 @@
     <ClInclude Include="Src\ECS\SpriteComponent.h">
       <Filter>Src\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="Src\ECS\TileComponent.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
     <ClInclude Include="Src\ECS\TransformComponent.h">
       <Filter>Src\ECS</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\bricks.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\floor.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\ladder.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\RexTangle.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
 </Project>

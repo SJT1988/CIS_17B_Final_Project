@@ -2,6 +2,8 @@
 #include "Components.h"
 #include "../Vector2D.h"
 
+#include "Constants.h"
+
 class TransformComponent : public Component
 {
 public:

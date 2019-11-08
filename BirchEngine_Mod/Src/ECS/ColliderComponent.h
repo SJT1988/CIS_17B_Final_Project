@@ -22,7 +22,11 @@ public:
 		{
 			entity->addComponent<TransformComponent>();
 		}
+
 		transform = &entity->getComponent<TransformComponent>();
+		
+		// This pushes any collider we make into a list that the game manager (Game.cpp) can easily access
+		Game::colliders.push_back(this);
 	}
 
 	void update() override
