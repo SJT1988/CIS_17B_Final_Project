@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{50b57f00-b376-4c1c-8bfc-065301246004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{ed9576b7-a29c-4cc4-abd9-10f7677abd20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\ECS">
+      <UniqueIdentifier>{004725df-5806-4d2c-9a2b-4b4e61e70ccf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libpng16-16.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\brick.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\bricks.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\floor.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\ladder.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\RexTangle.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Collision.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Game.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameObject.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Map.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TextureManager.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Vector2D.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Collision.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Game.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GameObject.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Map.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TextureManager.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Vector2D.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\ColliderComponent.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Components.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\ECS.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\KeyboardController.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\SpriteComponent.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\TransformComponent.h">
+      <Filter>Src\ECS</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
