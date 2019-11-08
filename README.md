@@ -26,11 +26,11 @@ This is how Unity works.
 1. I use Windows. Kristian uses Liux. William uses Windows on a Mac. 9/10 problems you
 will encounter will be LINKER errors. this means that the project is not properly set up to locate the SDL and SDL_Image
 libraries.
-* This can be resolved in **Visual Studio 2017** on **Windows** by following [**this tutorial**](https://www.youtube.com/watch?v=QQzAHcojEKg).
-* This can be resolved in **XCode** on a **Mac** by following [**this tutorial**](https://www.youtube.com/watch?v=lHAUc6F_B3Y).
-* Both tutorials are by the guy making the tutorial.
-* Keep in mind that whatever you do for the SDL2 library, you will need to do almost the same for the SDL_Image library. I have already included the necessary dll's from both directories in the project.
-* If you are struggling to get up and running, PLEASE do not be too embarrassed to ask for assistance. I know what a pain in the ass this whole thing is and will not think less of anybody.
+    * This can be resolved in **Visual Studio 2017** on **Windows** by following [**this tutorial**](https://www.youtube.com/watch?v=QQzAHcojEKg).
+    * This can be resolved in **XCode** on a **Mac** by following [**this tutorial**](https://www.youtube.com/watch?v=lHAUc6F_B3Y).
+    * Both tutorials are by the guy making the tutorial.
+    * Keep in mind that whatever you do for the SDL2 library, you will need to do almost the same for the SDL_Image library. I have already included the necessary dll's from both directories in the project.
+    * If you are struggling to get up and running, PLEASE do not be too embarrassed to ask for assistance. I know what a pain in the ass this whole thing is and will not think less of anybody.
 2. The project *COULD* have a couple of instances of <iostream> and std::cout, which I believe are Windows-only. You may need to change these to fstream or something. These instances are few if any.
 
 
