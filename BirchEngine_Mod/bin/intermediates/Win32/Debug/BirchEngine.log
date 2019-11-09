@@ -1,11 +1,2 @@
-﻿  Collision.cpp
-  Constants.cpp
-  ECS.cpp
-  Game.cpp
-  GameObject.cpp
-  main.cpp
-  Map.cpp
-  TextureManager.cpp
-  Vector2D.cpp
-  Generating Code...
+﻿  Map.cpp
   BirchEngine.vcxproj -> C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\BirchEngine_Mod\bin\Win32\Debug\BirchEngine.exe

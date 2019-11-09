@@ -187,7 +187,9 @@
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\blue_solid.bmp" />
+    <Image Include="Assets\bricks.png" />
+    <Image Include="Assets\floor.png" />
+    <Image Include="Assets\ladder.png" />
     <Image Include="Assets\rexTangle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

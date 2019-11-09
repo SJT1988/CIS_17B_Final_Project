@@ -98,10 +98,16 @@
     <None Include="Assets\map00.map" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\blue_solid.bmp">
+    <Image Include="Assets\rexTangle.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Assets\rexTangle.png">
+    <Image Include="Assets\bricks.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\floor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\ladder.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
