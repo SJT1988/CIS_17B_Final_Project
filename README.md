@@ -56,6 +56,8 @@ Spencer Trumbore: Physics, BirchEngine de-mystifier
   * comedy
 
 ## TODO
+
+* see "Projects"
 * Learn more about SDL -- see what we can do
  * upload to github
 * flesh out combat system
