@@ -1,11 +1,11 @@
 # CIS_17B_Final_Project
 
-# Major Update 11/08/19
+# Major Update 11/09/19
 
 We are using the design method and base engine layed out by
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
-As of this update I have finished video #16. This is between 2-3 hours of content.
+As of this update I have finished video #17 (Animated Sprite Sheets). This is between 2-3 hours of content.
 I have uploaded my version of the project with necessary (mostly trivial) differences
 so far. This is the folder **BirchEngine_Mod** and I think we should stick with this.
 
