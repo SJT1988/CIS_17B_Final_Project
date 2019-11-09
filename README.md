@@ -1,7 +1,7 @@
 # CIS_17B_Final_Project
 
 # Major Update
-Inline '<font color="red">11/08/19</font>'
+Inline '<p><font color="red">11/08/19</font></p>'
 We are using the design method and base engine layed out by
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
