@@ -2,7 +2,7 @@
 
 # Major Update 11/09/19
 
-We are using the design method and base engine layed out by
+We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
 As of this update I have finished video #17 (Animated Sprite Sheets). This is between 2-3 hours of content.
