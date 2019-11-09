@@ -1,6 +1,6 @@
 # CIS_17B_Final_Project
 
-# Major Update 09/07/2019:
+# Major Update 09/<span style="color:blue">08</span>/2019:
 We are using the design method and base engine layed out by
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
