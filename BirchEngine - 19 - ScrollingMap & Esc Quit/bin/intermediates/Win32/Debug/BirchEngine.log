@@ -1,0 +1,21 @@
+﻿  Collision.cpp
+  Constants.cpp
+  ECS.cpp
+  Game.cpp
+c:\dev\birchengine - 19 - scrollingmap & esc quit\birchengine\src\ecs\ecs.h(117): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  c:\dev\birchengine - 19 - scrollingmap & esc quit\birchengine\src\game.cpp(74): note: see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int>(int &&,int &&)' being compiled
+          with
+          [
+              T=TransformComponent
+          ]
+  GameObject.cpp
+  main.cpp
+  Map.cpp
+  TextureManager.cpp
+  Vector2D.cpp
+  Generating Code...
+  BirchEngine.vcxproj -> C:\Dev\BirchEngine - 19 - ScrollingMap & Esc Quit\bin\Win32\Debug\BirchEngine.exe
