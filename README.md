@@ -7,7 +7,7 @@ Repo updated. Unnecessary files removed, untangled and then deleted old repos (s
 We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
-As of this update I have finished video **#18** (Tile Map & Tile Set implementation). This is at least 3 hours of content so far.
+As of this update I have finished video **#19** (Scrolling Map & Press ESC to Quit). The scrolling map part is not implemented, I skipped most of the [short] video. This project is the result of at least 3 hours of tutorials so far.
 I have uploaded my version of the project with necessary (mostly trivial) differences
 so far. This is the folder **BirchEngine_Mod** and I think we should stick with this.
 
