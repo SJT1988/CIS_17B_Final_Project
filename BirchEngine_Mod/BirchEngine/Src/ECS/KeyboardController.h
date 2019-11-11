@@ -71,6 +71,8 @@ public:
 				sprite->Play("IdleLeft");
 				sprite->spriteFlip = SDL_FLIP_HORIZONTAL;
 				break;
+			case SDLK_ESCAPE:
+				Game::isRunning = false;
 			default:
 				break;
 			}
