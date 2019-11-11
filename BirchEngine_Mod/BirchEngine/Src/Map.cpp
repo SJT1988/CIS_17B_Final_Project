@@ -11,27 +11,31 @@ Map::Map()
 
 Map::~Map()
 {
-
+	
 }
 
 void Map::LoadMap(std::string path, int sizeX, int sizeY)
 {
-	char tile;
+	char c;
 	std::fstream mapFile;
 	mapFile.open(path);
 
+	int srcX, srcY;
+
+	// these loops parse the .map file:
 	for (int y = 0; y < sizeY; y++)
 	{
 		for (int x = 0; x < sizeX; x++)
 		{
-			mapFile.get(tile);
-			// id must be int and atoi() converts string to int:
-			Game::AddTile(atoi(&tile), x * TILE_SIZE, y * TILE_SIZE);
-			mapFile.ignore(); //ignore the comma
+			mapFile.get(c);
+			srcY = atoi(&c)*TILE_SIZE; // atoi := string-to-int
+			mapFile.get(c);
+			srcX = atoi(&c)*TILE_SIZE;
+			Game::AddTile(srcX, srcY, x*TILE_SIZE, y*TILE_SIZE);
+			mapFile.ignore(); //skip the comma
 		}
 	}
 
 	mapFile.close();
 }
-
 

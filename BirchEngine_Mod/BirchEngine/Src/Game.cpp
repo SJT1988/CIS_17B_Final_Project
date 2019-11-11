@@ -7,7 +7,7 @@
 
 #include "Constants.h"
 
-Map* map;
+Map *mapBG, *map, *mapFX;
 Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
@@ -16,6 +16,8 @@ std::vector<ColliderComponent*> Game::colliders;
 
 auto& player(manager.addEntity());
 auto&wall(manager.addEntity());
+
+const char* tileSet = "Assets/tileset.png";
 
 enum groupLabels : std::size_t
 {
@@ -54,19 +56,38 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		isRunning = true;
 	}
 
+	mapBG = new Map();
 	map = new Map();
+	mapFX = new Map();
 
 	// +----------------------------+
 	// | $$$ ECS IMPLEMENTATION $$$ |
 	// +----------------------------+
 
-	Map::LoadMap("Assets/map00.map", 11, 11);
-	player.addComponent<TransformComponent>(); // putting a new coordinate here works now
+	// background map:
+	map->LoadMap("Assets/mapBG.map", 11, 11);
+	// 'the' map:
+	map->LoadMap("Assets/map01.map", 11, 11);
+	// transform coordinates are in pixels if you use them. Default is 0,0
+	player.addComponent<TransformComponent>(5 * TILE_SIZE, 3 * TILE_SIZE); // putting a new coordinate here works now
 	// 4 frames in animation, animate continuously with 1 sec between frames:
 	player.addComponent<SpriteComponent>("Assets/RexTangle.png", true);
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
-	player.addGroup(groupPlayers);
+	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
+
+	/* 
+	LIMITATION:
+		THE LAST THING THAT GETS DRAWN IN UPDATE() is the player.
+		As of now, there is not a method to render on top of the player
+		without updating the foreground every frame. Running the next
+		line after player(s) have been drawn in Update() will bring the
+		program to a terrifying crawl. DO NOT TRY IT.
+		Since the player is drawn in Update(), it doesn't matter if we do
+		this line here for before all the "player" stuff above.
+	*/
+	// fx map/overlays:
+	mapFX->LoadMap("Assets/mapFX.map", 11, 11);
 
 	/*
 	wall.addComponent<TransformComponent>(5*TILE_SIZE, 5*TILE_SIZE, TILE_SIZE, TILE_SIZE, 1);
@@ -133,6 +154,7 @@ void Game::render()
 	{
 		n->draw();
 	}
+
 	//end with this
 	SDL_RenderPresent(renderer);
 }
@@ -144,9 +166,9 @@ void Game::clean()
 	SDL_Quit();
 }
 
-void Game::AddTile(int id, int x, int y)
+void Game::AddTile(int srcX, int srcY, int posX, int posY)
 {
 	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(x, y, TILE_SIZE, TILE_SIZE, id);
+	tile.addComponent<TileComponent>(srcX, srcY,posX, posY, tileSet);
 	tile.addGroup(groupMap);
 }

@@ -38,7 +38,7 @@ public:
 	{
 		animated = isAnimated;
 
-		// set animation indices
+		// create animations --> Animation(index, #frames in animation, delay between frames):
 		Animation player_idleUp = Animation(0, 1, 1); // IdleUp pose is index 0, 1 frame long, and has a 1 second delay
 		Animation player_idleDown = Animation(1, 1, 1);
 		Animation player_idleLeft = Animation(2, 1, 1);
@@ -84,15 +84,20 @@ public:
 
 	void update() override
 	{
+		if (Game::event.type == SDL_KEYDOWN)
+		{
+			return;
+		}
+
 		if (animated)
 		{
 			srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / delay) % numFrames);
 		}
 
 		/* Multiple-frame animations will have their animations
-		indexed by the vertical position of the source rectangle's
+		indexed by the y-pixel-position of the source rectangle's
 		upper-left corner in the spritemap. In our case, that will
-		be multiples of the height of the TILE_SIZE (32px),
+		be integral multiples of the TILE_SIZE (32px),
 		eg. 0, 32, 64, etc.*/
 		srcRect.y = animIndex * transform->height;
 
