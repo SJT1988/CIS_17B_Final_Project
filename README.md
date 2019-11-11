@@ -2,7 +2,7 @@
 
 # Major Update 11/10/19
 
-I cleaned the directory as best I could. I am struggling to keep my local directory in sync with the online directory. I am replacing files by hand now. It sucks.
+Repo updated. Unnecessary files removed, untangled and then deleted old repos (sorry for the confusion).
 
 We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
