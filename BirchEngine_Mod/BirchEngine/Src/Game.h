@@ -23,13 +23,16 @@ public:
 	void render();
 	void clean();
 
+	static bool isRunning;
 	static void AddTile(int srcX, int srcY, int posX, int posY);
 	static void AddFX(int srcX, int srcY, int posX, int posY);
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
 	static std::vector<ColliderComponent*> colliders; // a vector of collider component pointers
+
 private:
-	bool isRunning = false;
+	
+	//bool isRunning = false;
 	int cnt = 0;
 	SDL_Window *window;
 };
