@@ -59,8 +59,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	// 'the' map:
 	tileSet->LoadMap("Assets/map01.map", 11, 11, Game::groupMap);
 	// transform coordinates are in pixels. Player instantiated at (0,0) by default
-	player.addComponent<TransformComponent>(5 * TILE_SIZE, 3 * TILE_SIZE); 
-	player.addComponent<SpriteComponent>("Assets/RexTangle.png", true);
+	player.addComponent<TransformComponent>(5 * TILE_SIZE, 2 * TILE_SIZE); 
+	player.addComponent<SpriteComponent>("Assets/RickTanglePI.png", true);
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
