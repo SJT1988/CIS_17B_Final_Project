@@ -87,7 +87,6 @@ public:
 
 	void update() override
 	{
-
 		// The player is animated, so frames will be read by
 		// incrementing the "window" (source rectangle) horizontally
 		// on the sprite sheet.
