@@ -1,15 +1,14 @@
 # CIS_17B_Final_Project
 
-# Major Update 11/10/19
+# Major Update 11/14/19
 
 Repo updated. Unnecessary files removed, untangled and then deleted old repos (sorry for the confusion).
 
 We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
-As of this update I have finished video **#19** (Scrolling Map & Press ESC to Quit). The scrolling map part is not implemented, I skipped most of the [short] video. This project is the result of at least 3 hours of tutorials so far.
-I have uploaded my version of the project with necessary (mostly trivial) differences
-so far. This is the folder **BirchEngine_Mod** and I think we should stick with this.
+As of this update I have finished video **#21** (Asset Manager + Projectiles). The scrolling map part is not implemented, I skipped most of the [short] video. This project is the result of about 4-5 hours of tutorials and various deviations.
+I have uploaded my version of the project with necessary differences. There is currently a bug to sort out that is preventing the projectile image from being seen.
 
 ## So What Does This Thing Do?
 
