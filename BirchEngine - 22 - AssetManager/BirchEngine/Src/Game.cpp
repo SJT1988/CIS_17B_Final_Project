@@ -81,7 +81,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 
 	//assets->CreateProjectile(player.getComponent<TransformComponent>().position, player.getComponent<TransformComponent>().velocity * (, 512, 1, "projectile");
-	assets->CreateProjectile(Vector2D(32, 32), Vector2D(2,0), 512, 1, "projectile");
+	//assets->CreateProjectile(Vector2D(32, 32), Vector2D(2,0), 512, 1, "projectile");
 
 	// fx map/overlays:
 	sceneMap->LoadMap("Assets/map01FX.map", 11, 11, groupMapFX);
@@ -133,15 +133,17 @@ void Game::update()
 	}
 	
 	// handle projectile collsions
+	/*
 	for (auto& p : projectiles)
 	{
-		if (Collision::AABB(player.getComponent<ColliderComponent>().collider,
+		if (Collision::AABB(monster.getComponent<ColliderComponent>().collider,
 			p->getComponent<ColliderComponent>().collider)
 			)
 		{
 			p->destroy();
 		}
 	}
+	*/
 }
 
 void Game::render()

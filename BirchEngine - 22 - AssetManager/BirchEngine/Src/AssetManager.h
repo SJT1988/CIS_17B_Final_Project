@@ -9,6 +9,7 @@
 class AssetManager
 {
 public:
+	Manager * manager;
 	AssetManager(Manager* man);
 	~AssetManager();
 
@@ -28,7 +29,7 @@ public:
 	SDL_Texture * GetTexture(std::string id);
 
 private:
-	Manager * manager;
+	// Manager * manager;
 	// associate textures with id:
 	std::map<std::string, SDL_Texture*> textures;
 	
