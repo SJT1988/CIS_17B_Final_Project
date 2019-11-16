@@ -18,6 +18,7 @@ AssetManager* Game::assets = new AssetManager(&manager);
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
+auto& monster(manager.addEntity());
 
 // put tiles in the game:
 
@@ -50,7 +51,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	assets->AddTexture("terrain", "Assets/tileset.png");
 	assets->AddTexture("player", "Assets/RickTangle_SpriteSheet.png");
 	assets->AddTexture("projectile", "Assets/bullet.png");
-	
+	assets->AddTexture("monster", "Assets/monster.png");
 	sceneMap = new Map("terrain", 1, TILE_SIZE);
 
 	// +----------------------------+
@@ -69,6 +70,15 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player", 16, 16, TILE_SIZE);
 	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
+
+
+	monster.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 7 * TILE_SIZE - 16, 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
+	monster.addComponent<SpriteComponent>("monster", true);
+	monster.getComponent<SpriteComponent>().animIndex = 0;
+	monster.getComponent<SpriteComponent>().Play("MonsterWalk");
+	monster.addComponent<ColliderComponent>("monster", 16, 16, TILE_SIZE);
+	monster.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
+
 
 	//assets->CreateProjectile(player.getComponent<TransformComponent>().position, player.getComponent<TransformComponent>().velocity * (, 512, 1, "projectile");
 	assets->CreateProjectile(Vector2D(32, 32), Vector2D(2,0), 512, 1, "projectile");
