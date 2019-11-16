@@ -52,6 +52,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	assets->AddTexture("player", "Assets/RickTangle_SpriteSheet.png");
 	assets->AddTexture("projectile", "Assets/bullet.png");
 	assets->AddTexture("monster", "Assets/monster.png");
+	// assets->AddTexture("collider", "Assets/collider.png");
 	sceneMap = new Map("terrain", 1, TILE_SIZE);
 
 	// +----------------------------+
@@ -76,12 +77,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	monster.addComponent<SpriteComponent>("monster", true);
 	monster.getComponent<SpriteComponent>().animIndex = 0;
 	monster.getComponent<SpriteComponent>().Play("MonsterWalk");
-	monster.addComponent<ColliderComponent>("monster", 16, 16, TILE_SIZE);
-	monster.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
-
-
-	//assets->CreateProjectile(player.getComponent<TransformComponent>().position, player.getComponent<TransformComponent>().velocity * (, 512, 1, "projectile");
-	//assets->CreateProjectile(Vector2D(32, 32), Vector2D(2,0), 512, 1, "projectile");
+	monster.addComponent<ColliderComponent>("monster", 20, 20, 24);
+	monster.addGroup(groupMonsters);
 
 	// fx map/overlays:
 	sceneMap->LoadMap("Assets/map01FX.map", 11, 11, groupMapFX);
@@ -94,6 +91,7 @@ auto& mapBgTiles(manager.getGroup(Game::groupMapBG));
 auto& mapTiles(manager.getGroup(Game::groupMap));
 auto& mapFxTiles(manager.getGroup(Game::groupMapFX));
 auto& players(manager.getGroup(Game::groupPlayers));
+auto& monsters(manager.getGroup(Game::groupMonsters));
 auto& colliders(manager.getGroup(Game::groupColliders));
 auto& projectiles(manager.getGroup(Game::groupProjectiles));
 
@@ -120,7 +118,7 @@ void Game::update()
 
 	manager.refresh();
 	manager.update();
-
+	
 	// handle player collisions
 	for (auto& c : colliders)
 	{
@@ -129,21 +127,45 @@ void Game::update()
 		{
 			// if player collides, he is reset to previous position he was in
 			player.getComponent<TransformComponent>().position = playerPosition;
+			// std::cout << "Try not to stub your precious little toes..." << std::endl;
 		}
 	}
-	
+
+	for (auto& m : monsters)
+	{
+		SDL_Rect mCollider = m->getComponent<ColliderComponent>().collider;
+		if (Collision::AABB(mCollider, playerCollider))
+		{
+			// if player collides, he is reset to previous position he was in
+			player.getComponent<TransformComponent>().position = playerPosition;
+			std::cout << "Don't get up in that spider's business!" << std::endl;
+		}
+	}
+
 	// handle projectile collsions
-	/*
 	for (auto& p : projectiles)
 	{
 		if (Collision::AABB(monster.getComponent<ColliderComponent>().collider,
-			p->getComponent<ColliderComponent>().collider)
-			)
+			p->getComponent<ColliderComponent>().collider))
 		{
-			p->destroy();
+			//p->destroy();
+			//monster.destroy();
+			std::cout << "You shot a spider!" << std::endl;
 		}
 	}
-	*/
+	for (auto& p : projectiles)
+	{
+		for (auto& c : colliders)
+		{
+			SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+			if (c->getComponent<ColliderComponent>().tag == "terrain" &&
+				Collision::AABB(cCollider, playerCollider))
+			{
+				p->destroy();
+				std::cout << "Nice shot." << std::endl;
+			}
+		}
+	}
 }
 
 void Game::render()
@@ -174,6 +196,10 @@ void Game::render()
 	for (auto& p : players)
 	{
 		p->draw();
+	}
+	for (auto& m : monsters)
+	{
+		m->draw();
 	}
 	for (auto& t : mapFxTiles)
 	{

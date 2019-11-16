@@ -35,7 +35,7 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY, enum Game::groupLabels
 		for (int x = 0; x < sizeX; x++)
 		{
 			mapFile.get(c);
-			srcY = atoi(&c)*tileSize; // atoi := string-to-int
+			srcY = atoi(&c)*tileSize; // atoi := character string-to-int
 			mapFile.get(c);
 			srcX = atoi(&c)*tileSize;
 			AddTile(srcX, srcY, x * (scaledSize), y * (scaledSize), groupLabel);
@@ -56,7 +56,7 @@ void Map::LoadColliders(std::string path, int sizeX, int sizeY)
 	std::fstream mapFile;
 	mapFile.open(path);
 
-	// int srcX, srcY; // these don't seem to be FOR anything...
+	int srcX, srcY; // these don't seem to be FOR anything...
 
 	for (int y = 0; y < sizeY; y++)
 	{

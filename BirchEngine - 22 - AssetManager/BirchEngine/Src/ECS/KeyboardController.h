@@ -43,7 +43,6 @@ public:
 			{
 				transform->velocity.Zero();
 				sprite->Play("ShootRight");
-				//(Game::assets->manager->getGroup(Game::groupPlayers))[0]->getComponent<TransformComponent>().position
 				Game::assets->CreateProjectile(sprite->spriteFlip == SDL_FLIP_NONE ? Vector2D(32, 16) + (transform->position) : Vector2D(-32, 16) + (transform->position),
 					sprite->spriteFlip == SDL_FLIP_NONE ? Vector2D(2, 0) : Vector2D(-2, 0),
 					352, 1, "projectile");

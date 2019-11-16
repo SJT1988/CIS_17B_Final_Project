@@ -36,15 +36,16 @@ public:
 		
 		if (distance > range)
 		{
-			std::cout << "Out of range!" << std::endl;
+			std::cout << "Projectile out of range!" << std::endl;
 			entity->destroy();
 		}
-		else if (transform->position.x > 512 ||
+		else if (transform->position.x > 352 ||
 			transform->position.x < 0  ||
-			transform->position.y > 512  ||
+			transform->position.y > 352  ||
 			transform->position.y < 0 
 			)
 		{
+			std::cout << "Projectile out of bounds!" << std::endl;
 			entity->destroy();
 		}
 	}
