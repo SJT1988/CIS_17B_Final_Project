@@ -167,16 +167,12 @@ void Game::render()
 		c->draw();
 	}
 	*/
-	for (auto& p : players)
+	for (auto& p : projectiles)
 	{
 		p->draw();
 	}
-	for (auto& p : projectiles)
+	for (auto& p : players)
 	{
-		// every component *CAN* override ECS::Component::draw(), but not every componenet does.
-		// draw() is overwritten by SpriteComponent(), CollisionComponent() and TileComponent().
-		// the projectile object has SpriteComponent() and ProjectileComponent(). Currently,
-		// it is not clear to me which component's draw() is being called.
 		p->draw();
 	}
 	for (auto& t : mapFxTiles)
