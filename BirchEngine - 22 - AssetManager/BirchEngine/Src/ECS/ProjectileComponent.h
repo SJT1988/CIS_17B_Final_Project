@@ -2,6 +2,7 @@
 
 #include "ECS.h"
 #include "Components.h"
+#include "../Vector2D.h"
 
 class ProjectileComponent : public Component
 {
@@ -11,10 +12,11 @@ public:
 		rng:	How far a projectile can go before it is destroyed.
 		sp:		The speed of the projectile.
 	*/
-	ProjectileComponent(int rng, int sp) 
+	ProjectileComponent(int rng, int sp, Vector2D vel) 
 	{
 		this->range = rng;
 		this->speed = sp;
+		this->velocity = vel;
 	}
 
 	~ProjectileComponent() {};
@@ -22,6 +24,7 @@ public:
 	void init() override 
 	{
 		transform = &entity->getComponent<TransformComponent>();
+		transform->velocity = velocity;
 	}
 	void update() override
 	{
@@ -54,4 +57,5 @@ private:
 	int speed = 0;
 	// counter for how far the projectile has travelled
 	int distance = 0;
+	Vector2D velocity;
 };

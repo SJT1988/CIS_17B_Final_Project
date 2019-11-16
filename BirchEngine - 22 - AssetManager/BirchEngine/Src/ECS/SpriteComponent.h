@@ -12,13 +12,14 @@ class SpriteComponent : public Component
 private:
 	TransformComponent *transform;
 	SDL_Texture *texture;
-	SDL_Rect srcRect, destRect;
+	
 
 	bool animated = false;
 	int numFrames = 0;
 	int delay = 100; // milliseconds
 
 public:
+	SDL_Rect srcRect, destRect;
 	std::string previousAnimation;
 	int animIndex = 0;
 
@@ -63,6 +64,12 @@ public:
 		animations.emplace("ShootDown", player_shootDown);
 		animations.emplace("ShootRight", player_shootRight);
 		
+		// as of now, I am convinced this Play() function sets the animIndex to 1 for every object
+		// we create that has a SpriteComponent. We need to find a way to not run this every time
+		// presuming that is indeed what is happening.  I am especially woried (but have not yet
+		// confirmed) that we are loading the player's animations into the animations mapping twice,
+		// or perhaps (and more likely) making a copy of these animations unecessarily for objects
+		// that don't need them.
 		Play("IdleDown");
 
 		setTexture(textureID);

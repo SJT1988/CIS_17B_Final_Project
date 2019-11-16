@@ -49,7 +49,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 	assets->AddTexture("terrain", "Assets/tileset.png");
 	assets->AddTexture("player", "Assets/RickTangle_SpriteSheet.png");
-	assets->AddTexture("projectile", "Assets/collider.png");
+	assets->AddTexture("projectile", "Assets/bullet.png");
 	
 	sceneMap = new Map("terrain", 1, TILE_SIZE);
 
@@ -70,7 +70,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	player.addComponent<ColliderComponent>("player", 16, 16, TILE_SIZE);
 	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
 
-	assets->CreateProjectile(Vector2D(32, 32), 512, 1, "projectile");
+	//assets->CreateProjectile(player.getComponent<TransformComponent>().position, player.getComponent<TransformComponent>().velocity * (, 512, 1, "projectile");
+	assets->CreateProjectile(Vector2D(32, 32), Vector2D(2,0), 512, 1, "projectile");
 
 	// fx map/overlays:
 	sceneMap->LoadMap("Assets/map01FX.map", 11, 11, groupMapFX);
@@ -171,6 +172,8 @@ void Game::render()
 		t->draw();
 	}
 	//end with this
+	// std::cout << "(" << players[0]->getComponent<SpriteComponent>().srcRect.x << ", " << players[0]->getComponent<SpriteComponent>().srcRect.y << ")" << std::endl;
+	// std::cout << projectiles[0]->getComponent<SpriteComponent>().animIndex << std::endl;
 	SDL_RenderPresent(renderer);
 }
 

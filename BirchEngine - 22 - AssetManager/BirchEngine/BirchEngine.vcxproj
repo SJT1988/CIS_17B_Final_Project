@@ -97,11 +97,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2_image-2.0.5\include;C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\SDL2_image-2.0.5\include;C:\Dev\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2_image-2.0.5\lib\x86;C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Dev\SDL2_image-2.0.5\lib\x86;C:\Dev\BirchEngine\SDL2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -110,11 +110,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2_image-2.0.5\include;C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\SDL2_image-2.0.5\include;C:\Dev\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2_image-2.0.5\lib\x86;C:\Users\Spencer\Documents\GitHub\CIS_17B_Final_Project\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Dev\SDL2_image-2.0.5\lib\x86;C:\Dev\BirchEngine\SDL2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>

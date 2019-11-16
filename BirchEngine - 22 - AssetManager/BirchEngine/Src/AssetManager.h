@@ -21,7 +21,7 @@ public:
 		sp := speed
 		texID := textureID for projectile's texture
 	*/
-	void CreateProjectile(Vector2D pos, int rng, int sp, std::string texID);
+	void CreateProjectile(Vector2D pos, Vector2D vel, int rng, int sp, std::string texID);
 
 	// Texture Management
 	void AddTexture(std::string id, const char * path);
