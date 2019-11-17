@@ -5,8 +5,8 @@
 We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
 
-As of this update I have finished all videos **#22/22**. The scrolling map part is not implemented, I skipped most of the [short] video. This project is the result of about 4-5 hours of tutorials and various deviations.
-I have uploaded my version of the project with necessary differences. There is currently a bug to sort out that is preventing the projectile image from being seen.
+As of this update I have finished all videos **#22/22**. The scrolling map part is not implemented. This project is the result of about 4-5 hours of tutorials and various deviations.
+I have uploaded my version of the project with necessary differences.
 
 ## So What Does This Thing Do?
 
