@@ -145,12 +145,15 @@ void Game::update()
 	// handle projectile collsions
 	for (auto& p : projectiles)
 	{
-		if (Collision::AABB(monster.getComponent<ColliderComponent>().collider,
-			p->getComponent<ColliderComponent>().collider))
+		for (auto& m : monsters)
 		{
-			//p->destroy();
-			//monster.destroy();
-			std::cout << "You shot a spider!" << std::endl;
+			if (Collision::AABB(m->getComponent<ColliderComponent>().collider,
+				p->getComponent<ColliderComponent>().collider))
+			{
+				p->destroy();
+				m->destroy();
+				std::cout << "You shot a spider!" << std::endl;
+			}
 		}
 	}
 	for (auto& p : projectiles)
