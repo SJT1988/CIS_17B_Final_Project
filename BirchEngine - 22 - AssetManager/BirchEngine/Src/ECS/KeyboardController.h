@@ -26,6 +26,7 @@ public:
 				transform->velocity.Zero();
 				sprite->Play("ShootUp");
 				sprite->spriteFlip = SDL_FLIP_NONE;
+				Game::assets->CreateProjectile(Vector2D(26,16) + transform->position, Vector2D(0, -2), 352, 1, "projectile");
 				// fix repeating animation later
 			}
 			else if (sprite->previousAnimation == "IdleDown" ||
@@ -34,6 +35,7 @@ public:
 				transform->velocity.Zero();
 				sprite->Play("ShootDown");
 				sprite->spriteFlip = SDL_FLIP_NONE;
+				Game::assets->CreateProjectile(Vector2D(5,16) + transform->position, Vector2D(0, 2), 352, 1, "projectile");
 				// fix repeating animation later
 			}
 			else if (sprite->previousAnimation == "IdleRight" ||
@@ -41,6 +43,9 @@ public:
 			{
 				transform->velocity.Zero();
 				sprite->Play("ShootRight");
+				Game::assets->CreateProjectile(sprite->spriteFlip == SDL_FLIP_NONE ? Vector2D(32, 16) + (transform->position) : Vector2D(-32, 16) + (transform->position),
+					sprite->spriteFlip == SDL_FLIP_NONE ? Vector2D(2, 0) : Vector2D(-2, 0),
+					352, 1, "projectile");
 				// fix repeating animation later
 			}
 		}

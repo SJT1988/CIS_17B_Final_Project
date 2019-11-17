@@ -9,6 +9,7 @@
 class AssetManager
 {
 public:
+	Manager * manager;
 	AssetManager(Manager* man);
 	~AssetManager();
 
@@ -21,14 +22,14 @@ public:
 		sp := speed
 		texID := textureID for projectile's texture
 	*/
-	void CreateProjectile(Vector2D pos, int rng, int sp, std::string texID);
+	void CreateProjectile(Vector2D pos, Vector2D vel, int rng, int sp, std::string texID);
 
 	// Texture Management
 	void AddTexture(std::string id, const char * path);
 	SDL_Texture * GetTexture(std::string id);
 
 private:
-	Manager * manager;
+	// Manager * manager;
 	// associate textures with id:
 	std::map<std::string, SDL_Texture*> textures;
 	

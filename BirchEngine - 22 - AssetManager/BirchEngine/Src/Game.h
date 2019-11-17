@@ -34,7 +34,8 @@ public:
 		groupMapFX,
 		groupPlayers,
 		groupColliders,
-		groupProjectiles
+		groupProjectiles,
+		groupMonsters
 	};
 
 private:

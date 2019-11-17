@@ -9,13 +9,14 @@ AssetManager::~AssetManager()
 {
 }
 
-void AssetManager::CreateProjectile(Vector2D pos, int rng, int sp, std::string texID)
+void AssetManager::CreateProjectile(Vector2D pos, Vector2D vel, int rng, int sp, std::string texID)
 {
 	auto& projectile(manager->addEntity());
 	projectile.addComponent<TransformComponent>(pos.x, pos.y, TILE_SIZE, TILE_SIZE, 1);
 	projectile.addComponent<SpriteComponent>(texID, false);
-	projectile.addComponent<ProjectileComponent>(rng, sp);
-	projectile.addComponent<ColliderComponent>("projectile");
+	projectile.getComponent<SpriteComponent>().animIndex = 0;
+	projectile.addComponent<ProjectileComponent>(rng, sp, vel);
+	projectile.addComponent<ColliderComponent>("projectile",13,13,6);
 	projectile.addGroup(Game::groupProjectiles);
 
 }

@@ -39,7 +39,7 @@ public:
 
 		transform = &entity->getComponent<TransformComponent>();
 		
-		// texture = TextureManager::LoadTexture("Assets/collider.png");
+		texture = TextureManager::LoadTexture("Assets/collider.png");
 
 		srcRect = { 0,0,TILE_SIZE,TILE_SIZE };
 		destRect = { collider.x,collider.y,collider.w,collider.h };
@@ -56,12 +56,15 @@ public:
 				collider.w = TILE_SIZE;
 				collider.h = TILE_SIZE;
 			}
-			else
+			else if (tag== "monster")
 			{
-				collider.x = static_cast<int>(transform->position.x);
-				collider.y = static_cast<int>(transform->position.y);
-				collider.w = transform->width * transform->scale;
-				collider.h = transform->height * transform->scale;
+				collider.x = static_cast<int>(transform->position.x) + 20;
+				collider.y = static_cast<int>(transform->position.y) + 20;
+			}
+			else if (tag == "projectile")
+			{
+				collider.x = static_cast<int>(transform->position.x) + 13;
+				collider.y = static_cast<int>(transform->position.y) + 13;
 			}
 		}
 
@@ -71,8 +74,13 @@ public:
 		destRect.y = collider.y; // destRect.y = collider.y - Game::camera.y;
 	}
 
+	// +---------------------------------------------+
+	// | $$$ UNCOMMENT THIS TO SEE THE COLLIDERS $$$ |
+	// +---------------------------------------------+
+
+
 	void draw() override
 	{
-		TextureManager::Draw(texture, srcRect, destRect, SDL_FLIP_NONE);
+		// TextureManager::Draw(texture, srcRect, destRect, SDL_FLIP_NONE);
 	}
 };

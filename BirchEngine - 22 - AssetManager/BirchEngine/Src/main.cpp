@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	int frameTime;
 
 	game = new Game();
-	game->init("GameWindow", 512, 512, false);
+	game->init("GameWindow", 352, 352, false);
 
 	while (game->running())
 	{

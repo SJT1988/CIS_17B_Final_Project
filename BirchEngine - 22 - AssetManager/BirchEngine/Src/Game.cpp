@@ -18,6 +18,7 @@ AssetManager* Game::assets = new AssetManager(&manager);
 bool Game::isRunning = false;
 
 auto& player(manager.addEntity());
+auto& monster(manager.addEntity());
 
 // put tiles in the game:
 
@@ -49,8 +50,9 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 
 	assets->AddTexture("terrain", "Assets/tileset.png");
 	assets->AddTexture("player", "Assets/RickTangle_SpriteSheet.png");
-	assets->AddTexture("projectile", "Assets/collider.png");
-	
+	assets->AddTexture("projectile", "Assets/bullet.png");
+	assets->AddTexture("monster", "Assets/monster.png");
+	// assets->AddTexture("collider", "Assets/collider.png");
 	sceneMap = new Map("terrain", 1, TILE_SIZE);
 
 	// +----------------------------+
@@ -70,7 +72,13 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	player.addComponent<ColliderComponent>("player", 16, 16, TILE_SIZE);
 	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
 
-	assets->CreateProjectile(Vector2D(32, 32), 512, 1, "projectile");
+
+	monster.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 7 * TILE_SIZE - 16, 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
+	monster.addComponent<SpriteComponent>("monster", true);
+	monster.getComponent<SpriteComponent>().animIndex = 0;
+	monster.getComponent<SpriteComponent>().Play("MonsterWalk");
+	monster.addComponent<ColliderComponent>("monster", 20, 20, 24);
+	monster.addGroup(groupMonsters);
 
 	// fx map/overlays:
 	sceneMap->LoadMap("Assets/map01FX.map", 11, 11, groupMapFX);
@@ -83,6 +91,7 @@ auto& mapBgTiles(manager.getGroup(Game::groupMapBG));
 auto& mapTiles(manager.getGroup(Game::groupMap));
 auto& mapFxTiles(manager.getGroup(Game::groupMapFX));
 auto& players(manager.getGroup(Game::groupPlayers));
+auto& monsters(manager.getGroup(Game::groupMonsters));
 auto& colliders(manager.getGroup(Game::groupColliders));
 auto& projectiles(manager.getGroup(Game::groupProjectiles));
 
@@ -109,7 +118,7 @@ void Game::update()
 
 	manager.refresh();
 	manager.update();
-
+	
 	// handle player collisions
 	for (auto& c : colliders)
 	{
@@ -118,17 +127,43 @@ void Game::update()
 		{
 			// if player collides, he is reset to previous position he was in
 			player.getComponent<TransformComponent>().position = playerPosition;
+			// std::cout << "Try not to stub your precious little toes..." << std::endl;
 		}
 	}
-	
+
+	for (auto& m : monsters)
+	{
+		SDL_Rect mCollider = m->getComponent<ColliderComponent>().collider;
+		if (Collision::AABB(mCollider, playerCollider))
+		{
+			// if player collides, he is reset to previous position he was in
+			player.getComponent<TransformComponent>().position = playerPosition;
+			std::cout << "Don't get up in that spider's business!" << std::endl;
+		}
+	}
+
 	// handle projectile collsions
 	for (auto& p : projectiles)
 	{
-		if (Collision::AABB(player.getComponent<ColliderComponent>().collider,
-			p->getComponent<ColliderComponent>().collider)
-			)
+		if (Collision::AABB(monster.getComponent<ColliderComponent>().collider,
+			p->getComponent<ColliderComponent>().collider))
 		{
-			p->destroy();
+			//p->destroy();
+			//monster.destroy();
+			std::cout << "You shot a spider!" << std::endl;
+		}
+	}
+	for (auto& p : projectiles)
+	{
+		for (auto& c : colliders)
+		{
+			SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+			if (c->getComponent<ColliderComponent>().tag == "terrain" &&
+				Collision::AABB(cCollider, playerCollider))
+			{
+				p->destroy();
+				std::cout << "Nice shot." << std::endl;
+			}
 		}
 	}
 }
@@ -154,23 +189,25 @@ void Game::render()
 		c->draw();
 	}
 	*/
+	for (auto& p : projectiles)
+	{
+		p->draw();
+	}
 	for (auto& p : players)
 	{
 		p->draw();
 	}
-	for (auto& p : projectiles)
+	for (auto& m : monsters)
 	{
-		// every component *CAN* override ECS::Component::draw(), but not every componenet does.
-		// draw() is overwritten by SpriteComponent(), CollisionComponent() and TileComponent().
-		// the projectile object has SpriteComponent() and ProjectileComponent(). Currently,
-		// it is not clear to me which component's draw() is being called.
-		p->draw();
+		m->draw();
 	}
 	for (auto& t : mapFxTiles)
 	{
 		t->draw();
 	}
 	//end with this
+	// std::cout << "(" << players[0]->getComponent<SpriteComponent>().srcRect.x << ", " << players[0]->getComponent<SpriteComponent>().srcRect.y << ")" << std::endl;
+	// std::cout << projectiles[0]->getComponent<SpriteComponent>().animIndex << std::endl;
 	SDL_RenderPresent(renderer);
 }
 
