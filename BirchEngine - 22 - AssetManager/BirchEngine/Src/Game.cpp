@@ -123,7 +123,8 @@ void Game::update()
 	for (auto& c : colliders)
 	{
 		SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
-		if (Collision::AABB(cCollider, playerCollider))
+		if (c->getComponent<ColliderComponent>().tag == "terrainCollider" &&
+			Collision::AABB(cCollider, playerCollider))
 		{
 			// if player collides, he is reset to previous position he was in
 			player.getComponent<TransformComponent>().position = playerPosition;
@@ -136,8 +137,7 @@ void Game::update()
 		SDL_Rect mCollider = m->getComponent<ColliderComponent>().collider;
 		if (Collision::AABB(mCollider, playerCollider))
 		{
-			// if player collides, he is reset to previous position he was in
-			player.getComponent<TransformComponent>().position = playerPosition;
+			// We probably want the spiders to be able to overlap player
 			std::cout << "Don't get up in that spider's business!" << std::endl;
 		}
 	}
@@ -155,15 +155,13 @@ void Game::update()
 				std::cout << "You shot a spider!" << std::endl;
 			}
 		}
-	}
-	for (auto& p : projectiles)
-	{
 		for (auto& c : colliders)
 		{
 			SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
-			if (c->getComponent<ColliderComponent>().tag == "terrain" &&
+			if ((c->getComponent<ColliderComponent>().tag == "terrainCollider") &&
 				Collision::AABB(cCollider, playerCollider))
 			{
+				std::cout << "WE GOT THIS FAR" << std::endl;
 				p->destroy();
 				std::cout << "Nice shot." << std::endl;
 			}
@@ -186,12 +184,13 @@ void Game::render()
 		t->draw();
 	}
 	// DEBUG ONLY:
-	/*
+	// This line must be uncommented to see terrain colliders, specifically
+	// Those colliders have the tag "terrainCollider"
 	for (auto& c : colliders)
 	{
 		c->draw();
 	}
-	*/
+	
 	for (auto& p : projectiles)
 	{
 		p->draw();
