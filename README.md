@@ -1,12 +1,7 @@
 # CIS_17B_Final_Project
 
-# Major Update 11/16/19
-
 We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
-
-As of this update I have finished all videos **#22/22**. The scrolling map part is not implemented. This project is the result of about 4-5 hours of tutorials and various deviations.
-I have uploaded my version of the project with necessary differences.
 
 ## So What Does This Thing Do?
 
