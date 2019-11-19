@@ -47,7 +47,8 @@ public:
 
 	void update() override
 	{
-		if (tag != "terrain") // colliders associated with terrain won't have a transform component
+		// NOTE: Terrain colliders are drawn in the Collisions section of Game.cpp
+		if (tag != "terrainCollider") // colliders associated with terrain won't have a transform component
 		{
 			if (tag == "player")
 			{
@@ -68,19 +69,20 @@ public:
 			}
 		}
 
-		// change this to commented code if using camera. See video # 21 @ 09:05
+		// Use the commented code below if using camera. See video # 21 @ 09:05
 		// https://www.youtube.com/watch?v=rP62bS0k3nU&t=654s
+
+		// where to DRAW the collider (not where it exists, which is set above)
 		destRect.x = collider.x; // destRect.x = collider.x - Game::camera.x;
 		destRect.y = collider.y; // destRect.y = collider.y - Game::camera.y;
 	}
 
-	// +---------------------------------------------+
-	// | $$$ UNCOMMENT THIS TO SEE THE COLLIDERS $$$ |
-	// +---------------------------------------------+
-
-
 	void draw() override
 	{
+		// +---------------------------------------------+
+		// | $$$ UNCOMMENT THIS TO SEE THE COLLIDERS $$$ |
+		// +---------------------------------------------+
+		// This line must be uncommented to see ANY colliders at all
 		// TextureManager::Draw(texture, srcRect, destRect, SDL_FLIP_NONE);
 	}
 };

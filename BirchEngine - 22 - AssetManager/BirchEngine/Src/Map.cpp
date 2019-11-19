@@ -66,7 +66,7 @@ void Map::LoadColliders(std::string path, int sizeX, int sizeY)
 			if (c == '1')
 			{
 				auto& tileCollider(manager.addEntity());
-				tileCollider.addComponent<ColliderComponent>("terrain", x * scaledSize, y * scaledSize, scaledSize);
+				tileCollider.addComponent<ColliderComponent>("terrainCollider", x * scaledSize, y * scaledSize, scaledSize);
 				tileCollider.addGroup(Game::groupColliders);
 			}
 			mapFile.ignore();

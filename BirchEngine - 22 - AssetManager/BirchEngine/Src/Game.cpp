@@ -20,6 +20,8 @@ bool Game::isRunning = false;
 auto& player(manager.addEntity());
 auto& monster(manager.addEntity());
 
+Vector2D playerPosition;
+
 // put tiles in the game:
 
 Game::Game()
@@ -66,12 +68,14 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	// transform coordinates are in pixels. Player instantiated at (0,0) by default.
 	// Because the player sprites are 64x64 but the upper left of his body is 16 over, 16, down,
 	// we need to adjust for the offset when we place him:
-	player.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 2 * TILE_SIZE - 16, 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
+	player.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 2 * TILE_SIZE - 16, Vector2D(0,1), 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
 	player.addComponent<SpriteComponent>("player", true);
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player", 16, 16, TILE_SIZE);
 	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
 
+	
+	playerPosition = player.getComponent<TransformComponent>().position;
 
 	monster.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 7 * TILE_SIZE - 16, 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
 	monster.addComponent<SpriteComponent>("monster", true);
@@ -111,19 +115,32 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	Vector2D playerPosition = player.getComponent<TransformComponent>().position;
+	bool setPlayerPos = true;
 	SDL_Rect playerCollider = player.getComponent<ColliderComponent>().collider;
-	// DEBUG: log velocity vector
-	//std::cout <<  player.getComponent<TransformComponent>().velocity << std::endl;
-
-	manager.refresh();
-	manager.update();
-	
-	// handle player collisions
 	for (auto& c : colliders)
 	{
 		SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
-		if (Collision::AABB(cCollider, playerCollider))
+		if (c->getComponent<ColliderComponent>().tag == "terrainCollider" &&
+			Collision::AABB(cCollider, playerCollider))
+		{
+			setPlayerPos = false;
+			break;
+		}
+	}
+	if (setPlayerPos == true)
+	{
+		playerPosition = player.getComponent<TransformComponent>().position;
+	}
+
+	// manager.refresh();
+	// manager.update();
+	
+	// handle player collision with the map
+	for (auto& c : colliders)
+	{
+		SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+		if (c->getComponent<ColliderComponent>().tag == "terrainCollider" &&
+			Collision::AABB(cCollider, playerCollider))
 		{
 			// if player collides, he is reset to previous position he was in
 			player.getComponent<TransformComponent>().position = playerPosition;
@@ -136,8 +153,7 @@ void Game::update()
 		SDL_Rect mCollider = m->getComponent<ColliderComponent>().collider;
 		if (Collision::AABB(mCollider, playerCollider))
 		{
-			// if player collides, he is reset to previous position he was in
-			player.getComponent<TransformComponent>().position = playerPosition;
+			// We probably want the spiders to be able to overlap player
 			std::cout << "Don't get up in that spider's business!" << std::endl;
 		}
 	}
@@ -145,20 +161,20 @@ void Game::update()
 	// handle projectile collsions
 	for (auto& p : projectiles)
 	{
-		if (Collision::AABB(monster.getComponent<ColliderComponent>().collider,
-			p->getComponent<ColliderComponent>().collider))
+		for (auto& m : monsters)
 		{
-			//p->destroy();
-			//monster.destroy();
-			std::cout << "You shot a spider!" << std::endl;
+			if (Collision::AABB(m->getComponent<ColliderComponent>().collider,
+				p->getComponent<ColliderComponent>().collider))
+			{
+				p->destroy();
+				m->destroy();
+				std::cout << "You shot a spider!" << std::endl;
+			}
 		}
-	}
-	for (auto& p : projectiles)
-	{
 		for (auto& c : colliders)
 		{
 			SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
-			if (c->getComponent<ColliderComponent>().tag == "terrain" &&
+			if ((c->getComponent<ColliderComponent>().tag == "terrainCollider") &&
 				Collision::AABB(cCollider, playerCollider))
 			{
 				p->destroy();
@@ -166,6 +182,9 @@ void Game::update()
 			}
 		}
 	}
+
+	manager.refresh();
+	manager.update();
 }
 
 void Game::render()
@@ -183,6 +202,8 @@ void Game::render()
 		t->draw();
 	}
 	// DEBUG ONLY:
+	// This line must be uncommented to see terrain colliders, specifically
+	// Those colliders have the tag "terrainCollider"
 	/*
 	for (auto& c : colliders)
 	{
