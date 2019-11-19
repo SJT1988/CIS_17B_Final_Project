@@ -131,12 +131,9 @@ void Game::update()
 	{
 		playerPosition = player.getComponent<TransformComponent>().position;
 	}
-	// DEBUG: log velocity vector
-	//std::cout <<  player.getComponent<TransformComponent>().velocity << std::endl;
-	std::cout << player.getComponent<TransformComponent>().position << std::endl;
 
-	manager.refresh();
-	manager.update();
+	// manager.refresh();
+	// manager.update();
 	
 	// handle player collision with the map
 	for (auto& c : colliders)
@@ -185,6 +182,9 @@ void Game::update()
 			}
 		}
 	}
+
+	manager.refresh();
+	manager.update();
 }
 
 void Game::render()
