@@ -10,6 +10,7 @@ public:
 
 	Vector2D position;
 	Vector2D velocity;
+	Vector2D facing;
 
 	int height = TILE_SIZE;
 	int width = TILE_SIZE;
@@ -44,6 +45,18 @@ public:
 		scale = sc;
 	}
 
+	TransformComponent(float x, float y, Vector2D direction, int h, int w, int sc)
+	{
+		position.x = x;
+		position.y = y;
+		facing.x = direction.x;
+		facing.y = direction.y;
+		height = h;
+		width = w;
+		scale = sc;
+	}
+
+
 	void init() override
 	{
 		velocity.Zero();
@@ -54,7 +67,6 @@ public:
 		float norm = velocity.Norm(); // std::sqrt(pow(velocity.x, 2) + pow(velocity.y, 2));
 		position.x += (norm != 0) ? static_cast<int>((velocity.x * speed) / norm) : static_cast<int>(velocity.x * speed);
 		position.y += (norm != 0) ? static_cast<int>((velocity.y * speed) / norm) : static_cast<int>(velocity.y * speed);
-		
 		/*
 		position.x += static_cast<int>(velocity.x * speed);
 		position.y += static_cast<int>(velocity.y * speed);

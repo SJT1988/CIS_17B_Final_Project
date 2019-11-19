@@ -25,9 +25,7 @@ public:
 
 	// create a mapping between indices and Animations
 	std::map<const char*, Animation> animations;
-
 	SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
-
 	SpriteComponent() = default;
 	
 	SpriteComponent(std::string texID)
@@ -74,7 +72,7 @@ public:
 		// confirmed) that we are loading the player's animations into the animations mapping twice,
 		// or perhaps (and more likely) making a copy of these animations unecessarily for objects
 		// that don't need them.
-		Play("IdleDown");
+		Play("IdleDown"); // this initializes the player's sprite indices
 
 		setTexture(textureID);
 	}
@@ -91,7 +89,8 @@ public:
 	void init() override
 	{
 		transform = &entity->getComponent<TransformComponent>();
-		srcRect.x = srcRect.y = 0;
+		srcRect.x = 0;
+		srcRect.y = 0;
 		srcRect.w = transform->width;
 		srcRect.h = transform->height;
 	}

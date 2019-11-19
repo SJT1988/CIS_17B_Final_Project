@@ -66,7 +66,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	// transform coordinates are in pixels. Player instantiated at (0,0) by default.
 	// Because the player sprites are 64x64 but the upper left of his body is 16 over, 16, down,
 	// we need to adjust for the offset when we place him:
-	player.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 2 * TILE_SIZE - 16, 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
+	player.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 2 * TILE_SIZE - 16, Vector2D(0,1), 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
 	player.addComponent<SpriteComponent>("player", true);
 	player.addComponent<KeyboardController>();
 	player.addComponent<ColliderComponent>("player", 16, 16, TILE_SIZE);
@@ -161,7 +161,6 @@ void Game::update()
 			if ((c->getComponent<ColliderComponent>().tag == "terrainCollider") &&
 				Collision::AABB(cCollider, playerCollider))
 			{
-				std::cout << "WE GOT THIS FAR" << std::endl;
 				p->destroy();
 				std::cout << "Nice shot." << std::endl;
 			}
@@ -186,11 +185,12 @@ void Game::render()
 	// DEBUG ONLY:
 	// This line must be uncommented to see terrain colliders, specifically
 	// Those colliders have the tag "terrainCollider"
+	/*
 	for (auto& c : colliders)
 	{
 		c->draw();
 	}
-	
+	*/
 	for (auto& p : projectiles)
 	{
 		p->draw();
