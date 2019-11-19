@@ -6,7 +6,7 @@ c:\users\spencer\documents\github\cis_17b_final_project\birchengine - 22 - asset
           [
               _Ty=int
           ]
-  c:\users\spencer\documents\github\cis_17b_final_project\birchengine - 22 - assetmanager\birchengine\src\game.cpp(69): note: see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int,Vector2D,int,int,int>(int &&,int &&,Vector2D &&,int &&,int &&,int &&)' being compiled
+  c:\users\spencer\documents\github\cis_17b_final_project\birchengine - 22 - assetmanager\birchengine\src\game.cpp(71): note: see reference to function template instantiation 'T &Entity::addComponent<TransformComponent,int,int,Vector2D,int,int,int>(int &&,int &&,Vector2D &&,int &&,int &&,int &&)' being compiled
           with
           [
               T=TransformComponent

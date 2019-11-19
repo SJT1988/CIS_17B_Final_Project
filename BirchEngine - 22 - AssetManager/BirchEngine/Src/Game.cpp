@@ -20,6 +20,8 @@ bool Game::isRunning = false;
 auto& player(manager.addEntity());
 auto& monster(manager.addEntity());
 
+Vector2D playerPosition;
+
 // put tiles in the game:
 
 Game::Game()
@@ -72,6 +74,8 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 	player.addComponent<ColliderComponent>("player", 16, 16, TILE_SIZE);
 	player.addGroup(groupPlayers); // reminder: player(s) is/are being drawn in Update()
 
+	
+	playerPosition = player.getComponent<TransformComponent>().position;
 
 	monster.addComponent<TransformComponent>(5 * TILE_SIZE - 16, 7 * TILE_SIZE - 16, 64, 64, 1);  // (5 * TILE_SIZE, 2 * TILE_SIZE); 
 	monster.addComponent<SpriteComponent>("monster", true);
@@ -111,15 +115,30 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	Vector2D playerPosition = player.getComponent<TransformComponent>().position;
+	bool setPlayerPos = true;
 	SDL_Rect playerCollider = player.getComponent<ColliderComponent>().collider;
+	for (auto& c : colliders)
+	{
+		SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
+		if (c->getComponent<ColliderComponent>().tag == "terrainCollider" &&
+			Collision::AABB(cCollider, playerCollider))
+		{
+			setPlayerPos = false;
+			break;
+		}
+	}
+	if (setPlayerPos == true)
+	{
+		playerPosition = player.getComponent<TransformComponent>().position;
+	}
 	// DEBUG: log velocity vector
 	//std::cout <<  player.getComponent<TransformComponent>().velocity << std::endl;
+	std::cout << player.getComponent<TransformComponent>().position << std::endl;
 
 	manager.refresh();
 	manager.update();
 	
-	// handle player collisions
+	// handle player collision with the map
 	for (auto& c : colliders)
 	{
 		SDL_Rect cCollider = c->getComponent<ColliderComponent>().collider;
