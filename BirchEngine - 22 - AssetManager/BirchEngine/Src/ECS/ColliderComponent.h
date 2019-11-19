@@ -16,6 +16,8 @@ public:
 	SDL_Rect srcRect, destRect;
 
 	TransformComponent* transform;
+	int offsetX;
+	int offsetY;
 
 	ColliderComponent(std::string t)
 	{
@@ -25,8 +27,10 @@ public:
 	ColliderComponent(std::string t, int posX, int posY, int colliderSize)
 	{
 		this->tag = t;
-		this->collider.x = posX;
-		this->collider.y = posY;
+		this->offsetX = posX;
+		this->offsetY = posY;
+		this->collider.x = offsetX;
+		this->collider.y = offsetY;
 		this->collider.w = this->collider.h = colliderSize;
 	}
 
@@ -52,10 +56,10 @@ public:
 		{
 			if (tag == "player")
 			{
-				collider.x = static_cast<int>(transform->position.x + 16);
-				collider.y = static_cast<int>(transform->position.y + 16);
-				collider.w = TILE_SIZE;
-				collider.h = TILE_SIZE;
+				collider.x = static_cast<int>(transform->position.x + offsetX);
+				collider.y = static_cast<int>(transform->position.y + offsetY);
+				//collider.w = TILE_SIZE;
+				//collider.h = TILE_SIZE;
 			}
 			else if (tag== "monster")
 			{
@@ -83,6 +87,6 @@ public:
 		// | $$$ UNCOMMENT THIS TO SEE THE COLLIDERS $$$ |
 		// +---------------------------------------------+
 		// This line must be uncommented to see ANY colliders at all
-		// TextureManager::Draw(texture, srcRect, destRect, SDL_FLIP_NONE);
+		TextureManager::Draw(texture, srcRect, destRect, SDL_FLIP_NONE);
 	}
 };

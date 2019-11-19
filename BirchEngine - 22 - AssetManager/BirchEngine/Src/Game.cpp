@@ -115,6 +115,10 @@ void Game::handleEvents()
 
 void Game::update()
 {
+
+	manager.refresh();
+	manager.update();
+
 	bool setPlayerPos = true;
 	SDL_Rect playerCollider = player.getComponent<ColliderComponent>().collider;
 	for (auto& c : colliders)
@@ -131,9 +135,6 @@ void Game::update()
 	{
 		playerPosition = player.getComponent<TransformComponent>().position;
 	}
-
-	// manager.refresh();
-	// manager.update();
 	
 	// handle player collision with the map
 	for (auto& c : colliders)
@@ -144,7 +145,7 @@ void Game::update()
 		{
 			// if player collides, he is reset to previous position he was in
 			player.getComponent<TransformComponent>().position = playerPosition;
-			// std::cout << "Try not to stub your precious little toes..." << std::endl;
+			std::cout << "Try not to stub your precious little toes..." << std::endl;
 		}
 	}
 
@@ -182,9 +183,6 @@ void Game::update()
 			}
 		}
 	}
-
-	manager.refresh();
-	manager.update();
 }
 
 void Game::render()
