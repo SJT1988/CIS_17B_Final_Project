@@ -67,9 +67,5 @@ public:
 		float norm = velocity.Norm(); // std::sqrt(pow(velocity.x, 2) + pow(velocity.y, 2));
 		position.x += (norm != 0) ? static_cast<int>((velocity.x * speed) / norm) : static_cast<int>(velocity.x * speed);
 		position.y += (norm != 0) ? static_cast<int>((velocity.y * speed) / norm) : static_cast<int>(velocity.y * speed);
-		/*
-		position.x += static_cast<int>(velocity.x * speed);
-		position.y += static_cast<int>(velocity.y * speed);
-		*/
 	}
 };
