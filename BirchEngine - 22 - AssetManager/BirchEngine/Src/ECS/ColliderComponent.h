@@ -54,23 +54,8 @@ public:
 		// NOTE: Terrain colliders are drawn in the Collisions section of Game.cpp
 		if (tag != "terrainCollider") // colliders associated with terrain won't have a transform component
 		{
-			if (tag == "player")
-			{
-				collider.x = static_cast<int>(transform->position.x + offsetX);
-				collider.y = static_cast<int>(transform->position.y + offsetY);
-				//collider.w = TILE_SIZE;
-				//collider.h = TILE_SIZE;
-			}
-			else if (tag== "monster")
-			{
-				collider.x = static_cast<int>(transform->position.x) + 20;
-				collider.y = static_cast<int>(transform->position.y) + 20;
-			}
-			else if (tag == "projectile")
-			{
-				collider.x = static_cast<int>(transform->position.x) + 13;
-				collider.y = static_cast<int>(transform->position.y) + 13;
-			}
+			collider.x = static_cast<int>(transform->position.x) + offsetX;
+			collider.y = static_cast<int>(transform->position.y) + offsetY;
 		}
 
 		// Use the commented code below if using camera. See video # 21 @ 09:05
