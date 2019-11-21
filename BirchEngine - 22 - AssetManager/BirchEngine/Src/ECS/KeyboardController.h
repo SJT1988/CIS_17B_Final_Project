@@ -96,7 +96,6 @@ public:
 					sprite->spriteFlip = SDL_FLIP_NONE;
 					Game::assets->CreateProjectile(Vector2D(26, 16) + transform->position, Vector2D(0, -2), 352, 1, "projectile");
 					currentTime = SDL_GetTicks();
-					//sprite->Play("IdleUp");
 					// fix repeating animation later
 				}
 				else if (transform->facing == Vector2D(0, 1))
@@ -105,7 +104,6 @@ public:
 					sprite->Play("ShootDown");
 					sprite->spriteFlip = SDL_FLIP_NONE;
 					Game::assets->CreateProjectile(Vector2D(5, 16) + transform->position, Vector2D(0, 2), 352, 1, "projectile");
-					//sprite->Play("IdleDown");
 					// fix repeating animation later
 				}
 				else if (transform->facing == Vector2D(1, 0))
@@ -114,7 +112,6 @@ public:
 					sprite->Play("ShootRight");
 					Game::assets->CreateProjectile(Vector2D(32, 16) + (transform->position),
 						Vector2D(2, 0), 352, 1, "projectile");
-					//sprite->Play("IdleRight");
 					// fix repeating animation later
 				}
 				else if (transform->facing == Vector2D(-1, 0))
@@ -123,7 +120,6 @@ public:
 					sprite->Play("ShootRight");
 					Game::assets->CreateProjectile(Vector2D(-32, 16) + (transform->position),
 						Vector2D(-2, 0), 352, 1, "projectile");
-					//sprite->Play("IdleRight");
 				}
 				lastTime = currentTime;
 			}
