@@ -1,15 +1,7 @@
 # CIS_17B_Final_Project
 
-# Major Update 11/10/19
-
-Repo updated. Unnecessary files removed, untangled and then deleted old repos (sorry for the confusion).
-
 We are using the design method and base engine layed out by **Carl Birch** on
 the YouTube channel [**Let's Make Games**](https://www.youtube.com/user/creaper/about).
-
-As of this update I have finished video **#19** (Scrolling Map & Press ESC to Quit). The scrolling map part is not implemented, I skipped most of the [short] video. This project is the result of at least 3 hours of tutorials so far.
-I have uploaded my version of the project with necessary (mostly trivial) differences
-so far. This is the folder **BirchEngine_Mod** and I think we should stick with this.
 
 ## So What Does This Thing Do?
 
@@ -37,33 +29,11 @@ Both tutorials are by the author of the project our SDL tutorials are using.
 
 ## Roles:
 
-Spencer Trumbore: Physics, BirchEngine de-mystifier
+Spencer Trumbore: Back-end, Physics, Animation, BirchEngine de-mystifier
 
 ## Brainstorm
 ### Keep in mind we are a larger group. Must have a bigger but still managable scope
-* Top Down 2D RPG
-* collect to build to fight
-* leveling system: gear or point based (decided)
-  * stats? skills?
-* story based - linear ? optional ?
-  * Laura will have a draft
-  * nvm - keeping it simple
-  * text will be simple, just for tutorial
- * real time combat
- * story
-  * what gets the player going?
-  * 3 levels - get mcguffin - win game
-   * this may also need to be simplified
-  * comedy
-
-## TODO
-
-* see "Projects"
-* Learn more about SDL -- see what we can do
- * upload to github
-* flesh out combat system
-* flesh out crafting mechanics
-* once we find our focus, assign roles
-
-## End Goal
-* ~ 6 weeks to make
+* Top Down 2D dungeon spelunking
+* One Enemy
+* One gun
+* One goal (get to the ladder)
